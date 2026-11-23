@@ -1,0 +1,1171 @@
+/* ==========================================
+   MODIFICACIÓN 6
+   CONFIGURACIÓN GENERAL
+========================================== */
+
+:root {
+    --azul: #a9c4df;
+    --azul-oscuro: #617f9f;
+    --azul-claro: #eaf1f8;
+    --plata: #c7cbd1;
+    --blanco: #ffffff;
+    --texto: #536477;
+    --dorado: #b6a17e;
+    --verde-player: #1db954;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f8f9fb;
+    color: var(--texto);
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.seccion {
+    position: relative;
+    padding: 95px 22px;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+}
+
+h2 {
+    color: var(--azul-oscuro);
+    font-size: clamp(38px, 6vw, 55px);
+    margin-bottom: 18px;
+}
+
+.etiqueta {
+    color: var(--dorado);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.adorno-titulo {
+    color: var(--dorado);
+    font-size: 22px;
+    letter-spacing: 10px;
+    margin: 20px 0 30px;
+}
+
+.separador {
+    width: 65px;
+    height: 1px;
+    background: var(--plata);
+    margin: 40px auto;
+}
+
+
+/* ==========================================
+   PORTADA Y SOBRE INTERACTIVO
+========================================== */
+
+.pantalla-inicial {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 30px 18px;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(231, 239, 248, .92),
+            rgba(248, 249, 251, .97)
+        ),
+        url("../imagenes/1.jpeg") center/cover no-repeat;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.pantalla-inicial.oculta {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sobre-contenedor {
+    width: min(100%, 470px);
+    margin: auto;
+    padding: 20px 10px;
+    animation: aparecer 1.2s ease both;
+}
+
+.sobre-etiqueta {
+    display: block;
+    color: var(--dorado);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.sobre-titulo {
+    color: var(--azul-oscuro);
+    font-size: clamp(45px, 10vw, 67px);
+    margin-bottom: 0;
+}
+
+.sobre-nombre {
+    color: var(--azul-oscuro);
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(38px, 8vw, 52px);
+    margin: 0 0 12px;
+}
+
+.sobre-instruccion {
+    color: #8292a4;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+}
+
+.sobre-boton {
+    display: block;
+    width: min(100%, 340px);
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sobre {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.55 / 1;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    filter: drop-shadow(0 15px 18px rgba(66, 91, 119, .17));
+    animation: flotarSobre 3s ease-in-out infinite;
+}
+
+.sobre-cuerpo {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border: 1px solid #c3d2e1;
+    border-radius: 7px;
+    background: linear-gradient(145deg, #fdfefe, #dce8f3);
+}
+
+.sobre-solapa {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: linear-gradient(145deg, #d4e2ef, #a9c4df);
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+    transform-origin: top center;
+    transition: transform .9s ease;
+    backface-visibility: hidden;
+}
+
+.sobre-lado {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+.sobre-lado.izquierdo {
+    background: linear-gradient(45deg, #e8eff6, #cbdbea);
+    clip-path: polygon(0 0, 53% 58%, 0 100%);
+}
+
+.sobre-lado.derecho {
+    background: linear-gradient(315deg, #e8eff6, #cbdbea);
+    clip-path: polygon(100% 0, 47% 58%, 100% 100%);
+}
+
+.sobre-bajo {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: linear-gradient(0deg, #d7e4f0, #eef3f8);
+    clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+}
+
+.sello {
+    position: absolute;
+    z-index: 5;
+    top: 42%;
+    left: 50%;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    border: 2px solid #f4e8d3;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c8b28f, #a88e69);
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+    transition: opacity .4s ease;
+}
+
+.sobre-texto {
+    position: absolute;
+    z-index: 6;
+    bottom: 12%;
+    left: 0;
+    width: 100%;
+    color: #7189a2;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.sobre-ayuda {
+    margin-top: 25px;
+    color: #7c8da0;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 1.7;
+}
+
+.pantalla-inicial.abriendo .sobre-solapa {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.pantalla-inicial.abriendo .sello {
+    opacity: 0;
+}
+
+.pantalla-inicial.abriendo .sobre {
+    animation: abrirSobre .9s ease forwards;
+}
+
+@keyframes abrirSobre {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.12);
+        opacity: .5;
+    }
+}
+
+@keyframes flotarSobre {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* ==========================================
+   HERO / PRESENTACIÓN
+========================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff 0%,
+            #edf3f9 55%,
+            #dce8f3 100%
+        );
+    padding-top: 90px;
+    padding-bottom: 85px;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border: 1px solid rgba(182,161,126,.35);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero::before {
+    top: -130px;
+    left: -110px;
+}
+
+.hero::after {
+    bottom: -150px;
+    right: -100px;
+}
+
+.texto-superior {
+    color: var(--dorado);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.nombre-principal {
+    color: var(--azul-oscuro);
+    font-size: clamp(60px, 11vw, 100px);
+    line-height: .85;
+}
+
+.nombre-principal span {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(62px, 12vw, 105px);
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.texto-xv {
+    margin: 20px 0 25px;
+    color: var(--dorado);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.marco-foto-principal {
+    width: min(68vw, 310px);
+    height: min(85vw, 390px);
+    padding: 9px;
+    border: 1px solid var(--dorado);
+    border-radius: 180px 180px 12px 12px;
+    background: rgba(255,255,255,.6);
+    box-shadow: 0 15px 40px rgba(79,104,131,.13);
+    transition: transform .5s ease;
+}
+
+.marco-foto-principal:hover {
+    transform: translateY(-6px) rotate(1deg);
+}
+
+.marco-foto-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 170px 170px 7px 7px;
+}
+
+.frase-hero {
+    max-width: 420px;
+    margin: 30px auto 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.6;
+    color: #68798b;
+}
+
+.fecha-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: var(--azul-oscuro);
+    margin-top: 30px;
+}
+
+.fecha-hero > span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    line-height: 1;
+}
+
+.fecha-hero div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 4px;
+}
+
+.fecha-hero strong {
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.fecha-hero small {
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+.flecha-bajar {
+    margin-top: 28px;
+    color: var(--azul-oscuro);
+    font-size: 28px;
+    animation: flotar 2s infinite;
+}
+
+.adorno-flotante {
+    position: absolute;
+    color: rgba(182,161,126,.55);
+    font-size: 42px;
+    pointer-events: none;
+    animation: flotar 4s ease-in-out infinite;
+}
+
+.adorno-a {
+    top: 15%;
+    right: 12%;
+}
+
+.adorno-b {
+    bottom: 20%;
+    left: 10%;
+    animation-delay: .8s;
+}
+
+.adorno-c {
+    top: 45%;
+    left: 7%;
+    font-size: 25px;
+    animation-delay: 1.3s;
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(9px);
+    }
+}
+
+
+/* ==========================================
+   REPRODUCTOR MUSICAL ESTILO SPOTIFY
+========================================== */
+
+.spotify-player {
+    width: min(100%, 430px);
+    margin: 12px auto 0;
+    padding: 19px;
+    border-radius: 17px;
+    background: #17212b;
+    color: white;
+    text-align: left;
+    box-shadow: 0 15px 35px rgba(30,47,65,.2);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.spotify-player:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 19px 40px rgba(30,47,65,.25);
+}
+
+.spotify-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.spotify-portada {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #30475c;
+}
+
+.spotify-portada img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spotify-info {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.spotify-etiqueta {
+    color: #a8c7df;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.spotify-info strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+}
+
+.spotify-info small {
+    color: #aab5bf;
+    font-size: 10px;
+}
+
+.spotify-nota {
+    color: var(--verde-player);
+    font-size: 25px;
+    padding: 0 7px;
+}
+
+.spotify-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tiempo {
+    color: #aab5bf;
+    font-size: 9px;
+    min-width: 27px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.barra-progreso {
+    flex: 1;
+    width: 100%;
+    height: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    background: #53616e;
+}
+
+.barra-progreso::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--verde-player);
+}
+
+.barra-progreso::-moz-range-thumb {
+    width: 11px;
+    height: 11px;
+    border: none;
+    border-radius: 50%;
+    background: var(--verde-player);
+}
+
+.spotify-botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 48px;
+    margin-top: 9px;
+}
+
+.boton-reproducir {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--verde-player);
+    color: #102017;
+    font-size: 17px;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.boton-reproducir:hover {
+    background: #32d36c;
+    transform: scale(1.08);
+}
+
+#iconoMusica {
+    margin-left: 2px;
+}
+
+.control-volumen {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d2d9df;
+    font-size: 15px;
+}
+
+.control-volumen input {
+    width: 75px;
+    height: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: #53616e;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.control-volumen input::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+}
+
+.control-volumen input::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+}
+
+.spotify-mensaje {
+    color: #aab5bf;
+    font-size: 9px;
+    text-align: center;
+    margin-top: 7px;
+    letter-spacing: .3px;
+}
+
+
+/* ==========================================
+   INVITACIÓN
+========================================== */
+
+.invitacion {
+    background: white;
+}
+
+.texto-invitacion {
+    max-width: 650px;
+    margin: 0 auto 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    line-height: 1.7;
+    color: #69798b;
+}
+
+.texto-invitacion.destacado {
+    color: var(--azul-oscuro);
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   PADRES Y PADRINOS
+========================================== */
+
+.familia {
+    background: var(--azul-claro);
+}
+
+.familia-nombres {
+    margin: 25px auto;
+}
+
+.familia-nombres p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 5vw, 32px);
+    color: var(--azul-oscuro);
+}
+
+.familia-nombres span {
+    display: block;
+    color: var(--dorado);
+    font-family: 'Great Vibes', cursive;
+    font-size: 35px;
+    margin: 5px 0;
+}
+
+.frase-familia {
+    max-width: 480px;
+    margin: 25px auto 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   SEGUNDA FOTOGRAFÍA
+========================================== */
+
+.foto-especial {
+    background: white;
+}
+
+.foto-marco-secundario {
+    width: min(75vw, 350px);
+    height: min(100vw, 440px);
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid var(--dorado);
+    background: #fff;
+    box-shadow: 0 15px 40px rgba(79,104,131,.13);
+    transform: rotate(-2deg);
+    transition: transform .5s ease;
+}
+
+.foto-marco-secundario:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.foto-marco-secundario img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.frase-foto {
+    max-width: 480px;
+    margin: 40px auto 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: 34px;
+    color: var(--azul-oscuro);
+}
+
+
+/* ==========================================
+   CUENTA REGRESIVA
+========================================== */
+
+.cuenta-regresiva {
+    background: linear-gradient(135deg, #dce8f3, #f5f7fa);
+}
+
+.contador {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin: 35px auto;
+}
+
+.contador-caja {
+    width: 105px;
+    min-height: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,.9);
+    background: rgba(255,255,255,.65);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(79,104,131,.07);
+}
+
+.contador-caja span {
+    color: var(--azul-oscuro);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 39px;
+}
+
+.contador-caja small {
+    color: var(--dorado);
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.fecha-contador {
+    color: var(--azul-oscuro);
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   CEREMONIA Y RECEPCIÓN
+========================================== */
+
+.evento {
+    background: white;
+}
+
+.recepcion {
+    background: var(--azul-claro);
+}
+
+.icono-evento {
+    color: var(--dorado);
+    font-size: 38px;
+    margin-bottom: 18px;
+}
+
+.evento-detalles {
+    max-width: 500px;
+    margin: 30px auto 0;
+    padding: 35px 20px;
+    border: 1px solid rgba(182,161,126,.45);
+    background: rgba(255,255,255,.6);
+}
+
+.evento-hora {
+    color: var(--dorado);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+}
+
+.evento-detalles h3 {
+    color: var(--azul-oscuro);
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.evento-detalles > p:not(.evento-hora) {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.evento-fecha {
+    margin-top: 15px;
+    color: var(--dorado);
+    letter-spacing: 1px;
+}
+
+.btn-ubicacion {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 24px;
+    border: 1px solid var(--azul-oscuro);
+    border-radius: 30px;
+    color: var(--azul-oscuro);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.btn-ubicacion:hover {
+    background: var(--azul-oscuro);
+    color: white;
+}
+
+
+/* ==========================================
+   CÓDIGO DE VESTIMENTA
+========================================== */
+
+.vestimenta {
+    background: white;
+}
+
+.icono-vestimenta {
+    color: var(--dorado);
+    font-size: 48px;
+    margin: 15px 0;
+}
+
+.texto-vestimenta {
+    color: var(--azul-oscuro);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.aviso-vestimenta {
+    max-width: 480px;
+    margin: 0 auto;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.colores-vestimenta {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.color-circulo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #d6dce3;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.color-circulo.azul {
+    background: #a9c4df;
+}
+
+.color-circulo.plata {
+    background: #c7cbd1;
+}
+
+.color-circulo.blanco {
+    background: #fff;
+}
+
+
+/* ==========================================
+   DESPEDIDA
+========================================== */
+
+.despedida {
+    min-height: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(
+            rgba(222,234,246,.91),
+            rgba(242,246,250,.96)
+        ),
+        url("../imagenes/2.jpeg") center/cover no-repeat;
+}
+
+.despedida-contenido {
+    width: min(100%, 600px);
+    padding: 45px 25px;
+    border: 1px solid rgba(255,255,255,.9);
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(5px);
+}
+
+.despedida h2 {
+    font-size: clamp(48px, 8vw, 70px);
+}
+
+.nombre-despedida {
+    color: var(--azul-oscuro);
+    font-family: 'Great Vibes', cursive;
+    font-size: 43px;
+    margin-top: 20px;
+}
+
+.despedida-contenido > p:not(.etiqueta):not(.nombre-despedida) {
+    max-width: 390px;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.6;
+}
+
+.fecha-final {
+    display: block;
+    margin-top: 30px;
+    color: var(--dorado);
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+
+/* ==========================================
+   ANIMACIONES DE SECCIONES
+========================================== */
+
+.seccion.animar-entrada {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.seccion.animar-entrada.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   DISEÑO PARA CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+
+    .pantalla-inicial {
+        align-items: center;
+        padding: 20px 14px;
+    }
+
+    .sobre-contenedor {
+        padding: 15px 5px;
+    }
+
+    .sobre-boton {
+        width: min(90%, 310px);
+    }
+
+    .sobre-ayuda {
+        line-height: 1.7;
+    }
+
+    .seccion {
+        padding: 70px 18px;
+    }
+
+    .nombre-principal {
+        font-size: clamp(53px, 14vw, 78px);
+    }
+
+    .nombre-principal span {
+        font-size: clamp(55px, 14vw, 82px);
+    }
+
+    .marco-foto-principal {
+        width: min(75vw, 290px);
+        height: min(100vw, 350px);
+    }
+
+    .frase-hero {
+        font-size: 20px;
+        padding: 0 5px;
+    }
+
+    .spotify-player {
+        padding: 15px;
+        border-radius: 14px;
+    }
+
+    .spotify-portada {
+        width: 50px;
+        height: 50px;
+    }
+
+    .control-volumen input {
+        width: 60px;
+    }
+
+    .contador {
+        gap: 7px;
+    }
+
+    .contador-caja {
+        width: 70px;
+        min-height: 78px;
+    }
+
+    .contador-caja span {
+        font-size: 29px;
+    }
+
+    .contador-caja small {
+        font-size: 8px;
+    }
+
+    .evento-detalles {
+        padding: 28px 15px;
+    }
+
+    .evento-detalles h3 {
+        font-size: 27px;
+    }
+
+    .familia-nombres p {
+        font-size: 26px;
+        overflow-wrap: anywhere;
+    }
+
+    .despedida-contenido {
+        padding: 35px 18px;
+    }
+}
+
+
+/* ==========================================
+   CELULARES PEQUEÑOS
+========================================== */
+
+@media (max-width: 360px) {
+
+    .sobre-titulo {
+        font-size: 39px;
+    }
+
+    .sobre-nombre {
+        font-size: 34px;
+    }
+
+    .sobre-boton {
+        width: 95%;
+    }
+
+    .contador-caja {
+        width: 62px;
+    }
+
+    .contador-caja span {
+        font-size: 25px;
+    }
+
+    .spotify-player {
+        padding: 12px;
+    }
+
+    .spotify-info strong {
+        font-size: 11px;
+    }
+
+    .control-volumen input {
+        width: 48px;
+    }
+}
+
+
+/* ==========================================
+   ACCESIBILIDAD
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+
+    .seccion.animar-entrada {
+        opacity: 1;
+        transform: none;
+    }
+}
