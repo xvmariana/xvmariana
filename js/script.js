@@ -382,14 +382,24 @@ secciones.forEach(function (seccion) {
 });
 
 
-// Pausar la música cuando el usuario salga de la página
+// Recordar si la música estaba reproduciéndose
+let musicaEstabaSonando = false;
+
+// Detectar cuando se cambia de pestaña
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
+    musicaEstabaSonando = !musica.paused;
     musica.pause();
+  } else {
+    if (musicaEstabaSonando) {
+      musica.play().catch(() => {
+        console.log("No se pudo reanudar la música.");
+      });
+    }
   }
 });
 
-// Pausar también cuando el usuario abandone la página
+// Pausar al abandonar la página
 window.addEventListener("pagehide", () => {
   musica.pause();
 });
