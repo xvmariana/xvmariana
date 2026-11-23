@@ -380,3 +380,16 @@ secciones.forEach(function (seccion) {
     observador.observe(seccion);
 
 });
+
+
+// Pausar la música cuando el usuario salga de la página
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    musica.pause();
+  }
+});
+
+// Pausar también cuando el usuario abandone la página
+window.addEventListener("pagehide", () => {
+  musica.pause();
+});
