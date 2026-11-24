@@ -1169,3 +1169,82 @@ h2 {
         transform: none;
     }
 }
+
+/* SECCIÓN LLUVIA DE SOBRES */
+.lluvia-sobres {
+    width: 100%;
+    padding: 65px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sobres-contenido {
+    width: 100%;
+    max-width: 550px;
+    padding: 40px 30px;
+    border: 1px solid rgba(160, 190, 215, 0.65);
+    border-radius: 18px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.96),
+        rgba(225, 241, 250, 0.92)
+    );
+    box-shadow: 0 8px 25px rgba(100, 140, 170, 0.12);
+}
+
+.sobres-subtitulo {
+    display: block;
+    color: #789bb5;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.sobres-contenido h2 {
+    color: #7198b5;
+    font-size: 30px;
+    margin: 0;
+    font-family: inherit;
+}
+
+.sobres-decoracion {
+    color: #b7c9d8;
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.sobres-contenido p {
+    color: #687986;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0 auto 22px;
+}
+
+.sobres-firma {
+    display: block;
+    color: #789bb5;
+    font-size: 17px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .lluvia-sobres {
+        padding: 45px 15px;
+    }
+
+    .sobres-contenido {
+        padding: 32px 22px;
+    }
+
+    .sobres-contenido h2 {
+        font-size: 25px;
+    }
+
+    .sobres-contenido p {
+        font-size: 14px;
+    }
+}
